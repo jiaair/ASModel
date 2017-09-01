@@ -1,9 +1,9 @@
 //
 //  ViewController.h
-//  SSModel
+//  ASModel
 //
-//  Created by JIA on 2017/8/30.
-//  Copyright © 2017年 JIA. All rights reserved.
+//  Created by JIA on 2017/9/1.
+//  Copyright © 2017年 Jia. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

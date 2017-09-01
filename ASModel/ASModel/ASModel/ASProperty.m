@@ -1,24 +1,24 @@
 //
-//  SSProperty.m
+//  ASProperty.m
 //  wiki
 //
 //  Created by JIA on 2017/8/29.
 //  Copyright © 2017年 JIA. All rights reserved.
 //
 
-#import "SSProperty.h"
+#import "ASProperty.h"
 
-@implementation SSProperty
+@implementation ASProperty
 
 + (instancetype)propertyWithProperty:(objc_property_t)property {
     
-    return [[SSProperty alloc] initWithProperty:property];
+    return [[ASProperty alloc] initWithProperty:property];
 }
 
 - (instancetype)initWithProperty:(objc_property_t)property {
     if (self = [super init]) {
         _name = @(property_getName(property));
-        _type = [SSPropertyType propertyTypeWithAttributeString:@(property_getAttributes(property))];
+        _type = [ASPropertyType propertyTypeWithAttributeString:@(property_getAttributes(property))];
     }
     
     return self;
@@ -26,32 +26,32 @@
 
 @end
 
-NSString *const SSPropertyTypeInt = @"i";
-NSString *const SSPropertyTypeShort = @"s";
-NSString *const SSPropertyTypeFloat = @"f";
-NSString *const SSPropertyTypeDouble = @"d";
-NSString *const SSPropertyTypeLong = @"q";
-NSString *const SSPropertyTypeChar = @"c";
-NSString *const SSPropertyTypeBOOL1 = @"c";
-NSString *const SSPropertyTypeBOOL2 = @"b";
-NSString *const SSPropertyTypePoint = @"*";
-NSString *const SSPropertyTypeIvar = @"^{objc_ival=}";
-NSString *const SSPropertyTypeMethod = @"^{objc_method=}";
-NSString *const SSPropertyTypeBlock = @"@?";
-NSString *const SSPropertyTypeClass = @"#";
-NSString *const SSPropertyTypeSEL = @":";
-NSString *const SSPropertyTypeId = @"@";
+NSString *const ASPropertyTypeInt = @"i";
+NSString *const ASPropertyTypeShort = @"s";
+NSString *const ASPropertyTypeFloat = @"f";
+NSString *const ASPropertyTypeDouble = @"d";
+NSString *const ASPropertyTypeLong = @"q";
+NSString *const ASPropertyTypeChar = @"c";
+NSString *const ASPropertyTypeBOOL1 = @"c";
+NSString *const ASPropertyTypeBOOL2 = @"b";
+NSString *const ASPropertyTypePoint = @"*";
+NSString *const ASPropertyTypeIvar = @"^{objc_ival=}";
+NSString *const ASPropertyTypeMethod = @"^{objc_method=}";
+NSString *const ASPropertyTypeBlock = @"@?";
+NSString *const ASPropertyTypeClass = @"#";
+NSString *const ASPropertyTypeSEL = @":";
+NSString *const ASPropertyTypeId = @"@";
 
 static NSMutableDictionary *cachedTypeDict;
 
-@implementation SSPropertyType
+@implementation ASPropertyType
 
 + (void)load {
     cachedTypeDict = [NSMutableDictionary dictionary];
 }
 
 + (instancetype)propertyTypeWithAttributeString:(NSString *)string {
-    return [[SSPropertyType alloc] initWithTypeString:string];
+    return [[ASPropertyType alloc] initWithTypeString:string];
 }
 
 - (instancetype)initWithTypeString:(NSString *)string {
@@ -69,7 +69,7 @@ static NSMutableDictionary *cachedTypeDict;
 }
 
 - (void)getTypeCode:(NSString *)code {
-    if ([code isEqualToString:SSPropertyTypeId]) {
+    if ([code isEqualToString:ASPropertyTypeId]) {
         _idType = YES;
     } else if (code.length > 3 && [code hasPrefix:@"@\""]) {
         _code = [code substringWithRange:NSMakeRange(2, code.length - 3)];
@@ -79,11 +79,11 @@ static NSMutableDictionary *cachedTypeDict;
         _fromFoundation = [NSObject isSubclassOfClass:_classType];
         
         NSString *lowerCode = _code.lowercaseString;
-        NSArray *numberTypes = @[SSPropertyTypeInt, SSPropertyTypeShort, SSPropertyTypeBOOL1, SSPropertyTypeBOOL2, SSPropertyTypeFloat, SSPropertyTypeDouble, SSPropertyTypeLong, SSPropertyTypeChar];
+        NSArray *numberTypes = @[ASPropertyTypeInt, ASPropertyTypeShort, ASPropertyTypeBOOL1, ASPropertyTypeBOOL2, ASPropertyTypeFloat, ASPropertyTypeDouble, ASPropertyTypeLong, ASPropertyTypeChar];
         if ([numberTypes containsObject:lowerCode]) {
             _numberType = YES;
             
-            if ([lowerCode isEqualToString:SSPropertyTypeBOOL1] || [lowerCode isEqualToString:SSPropertyTypeBOOL2]) {
+            if ([lowerCode isEqualToString:ASPropertyTypeBOOL1] || [lowerCode isEqualToString:ASPropertyTypeBOOL2]) {
                 _boolType = YES;
             }
         }

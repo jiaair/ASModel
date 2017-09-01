@@ -1,14 +1,14 @@
 //
-//  NSObject+SSModel.m
+//  NSObject+ASModel.m
 //  wiki
 //
-//  Created by JIA on 2017/8/29.
-//  Copyright © 2017年 JIA. All rights reserved.
+//  Created by Jia on 2017/8/29.
+//  Copyright © 2017年 Jia. All rights reserved.
 //
 
-#import "NSObject+SSModel.h"
+#import "NSObject+ASModel.h"
 #import <objc/message.h>
-#import "SSProperty.h"
+#import "ASProperty.h"
 
 typedef struct property_t {
     const char *name;
@@ -37,7 +37,7 @@ static NSMutableDictionary *cachedPropertyDict;
         
         for (int i = 0; i < outCount; i++) {
             objc_property_t property = properties[i];
-            SSProperty *propertyObj = [SSProperty propertyWithProperty:property];
+            ASProperty *propertyObj = [ASProperty propertyWithProperty:property];
             [cachedProperties addObject:propertyObj];
         }
         
@@ -66,8 +66,8 @@ static NSMutableDictionary *cachedPropertyDict;
 
 - (instancetype)setKeyValues:(id)keyValues {
     NSArray *propertyArr = [self.class properties];
-    for (SSProperty *property in propertyArr) {
-        SSPropertyType *type = property.type;
+    for (ASProperty *property in propertyArr) {
+        ASPropertyType *type = property.type;
         Class classType = type.classType;
         if (type.isBoolType) {
             NSLog(@"bool");

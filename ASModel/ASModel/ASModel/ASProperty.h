@@ -1,27 +1,27 @@
 //
-//  SSProperty.h
+//  ASProperty.h
 //  wiki
 //
-//  Created by JIA on 2017/8/29.
-//  Copyright © 2017年 JIA. All rights reserved.
+//  Created by Jia on 2017/8/29.
+//  Copyright © 2017年 Jia. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-@class SSPropertyType;
+@class ASPropertyType;
 
-@interface SSProperty : NSObject
+@interface ASProperty : NSObject
 
 @property (nonatomic, readonly, copy) NSString *name;
 
-@property (nonatomic, readonly, strong) SSPropertyType *type;
+@property (nonatomic, readonly, strong) ASPropertyType *type;
 
 + (instancetype)propertyWithProperty:(objc_property_t)property;
 
 @end
 
-@interface SSPropertyType : NSObject
+@interface ASPropertyType : NSObject
 
 @property (nonatomic, readonly, getter=isIdType, assign) BOOL idType;
 
