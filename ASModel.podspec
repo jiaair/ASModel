@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASModel"
-  s.version      = "0.0.1"
+  s.version      = "1.0.0"
   s.summary      = "A simple and easy to use model framework for iOS/OSX."
 
   # This description is used to generate tags and improve search results.
@@ -24,10 +24,11 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  s.description  = <<-DESC  
+                       It is a marquee view used on iOS, which implement by Objective-C.  
+                       DESC
 
-  s.homepage     = "http://github.com/jiaair/ASModel"
+  s.homepage     = "https://github.com/jiaair/ASModel"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -79,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/ASModel.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/jiaair/ASModel.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
