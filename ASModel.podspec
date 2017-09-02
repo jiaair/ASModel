@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ASModel"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A simple and easy to use model framework for iOS/OSX."
 
   # This description is used to generate tags and improve search results.
