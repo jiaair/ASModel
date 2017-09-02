@@ -1,4 +1,5 @@
 # ASModel
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/jiaair/ASModel/master/LICENSE)&nbsp;\
 A simple and easy to use model framework for iOS/OSX.
 
 # Installation
